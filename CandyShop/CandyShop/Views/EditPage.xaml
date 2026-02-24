@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:CandyShop.ViewModels"
+             xmlns:models="clr-namespace:CandyShop.Common"
+             x:DataType="viewModel:EditPageViewModel"
+             x:Class="CandyShop.Views.EditPage">
+
+    <VerticalStackLayout>
+        <Picker ItemsSource="{Binding Products}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCandyForUpdate, Mode=TwoWay}"
+                Title="Válasszon egy cukrot"
+                MaximumWidthRequest="200"/>
+
+        <Label Text="Adja meg az új nevet" HorizontalOptions="Center"/>
+        <Entry Placeholder="{Binding SelectedCandyForUpdate.Name, FallbackValue=''}" 
+               Text="{Binding NewName}"
+               MaximumWidthRequest="200"/>
+
+        <Label Text="Adja meg az új árat" HorizontalOptions="Center"/>
+        <Entry Placeholder="{Binding SelectedCandyForUpdate.Price, FallbackValue='0'}" 
+               Text="{Binding NewPrice}"
+               MaximumWidthRequest="200"/>
+
+        <Label Text="Adja meg az új készletet" HorizontalOptions="Center"/>
+        <Entry Placeholder="{Binding SelectedCandyForUpdate.Stock, FallbackValue='0'}" 
+               Text="{Binding NewStock}"
+               MaximumWidthRequest="200"/>
+
+        <Button Text="Mentés" Command="{Binding UpdateCandyCommand}" 
+                Background="Green"  
+                CornerRadius="25" 
+                MaximumWidthRequest="200"/>
+    </VerticalStackLayout>
+</ContentPage>

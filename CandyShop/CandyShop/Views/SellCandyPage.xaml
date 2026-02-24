@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:CandyShop.ViewModels"
+             xmlns:models="clr-namespace:CandyShop.Common"
+             x:DataType="viewModel:SellCandyViewModel"
+             x:Class="CandyShop.Views.SellCandyPage"
+             Title="SellCandyPage">
+    
+    <VerticalStackLayout>
+        <Picker ItemsSource="{Binding Products}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCandyForSell, Mode=TwoWay}"
+                Title="Válasszon egy cukrot"
+                MaximumWidthRequest="200"/>
+
+
+        
+        <Label Text="{Binding SelectedCandyForSell.Price, StringFormat='Ár: {0}Ft',FallbackValue=''}" 
+               HorizontalOptions="Center"
+               MaximumWidthRequest="200"
+               Margin="10"/>
+        
+        <Label Text="{Binding SelectedCandyForSell.Stock, StringFormat='Elérhető készlet: {0} db', FallbackValue=''}" 
+               HorizontalOptions="Center"
+               MaximumWidthRequest="200"/>
+
+        <HorizontalStackLayout HorizontalOptions="Center" MaximumWidthRequest="400" Margin="10">
+             <Label Text="Adja meg a mennyiséget" HorizontalOptions="Center"/>
+
+            <Entry Text="{Binding CandyQuantity}"
+                   WidthRequest="100"/>
+        </HorizontalStackLayout>
+       
+
+        <Button 
+            Text="Hozzáadás"
+            Command="{Binding AddItemToOrderCommand}"
+            Background="Blue"
+            CornerRadius="25" 
+            MaximumWidthRequest="200"
+            Margin="10"/>
+
+        <CollectionView ItemsSource="{Binding OrderItems}" HorizontalOptions="Center" MaximumWidthRequest="300">
+            <CollectionView.ItemTemplate >
+                <DataTemplate>
+                    <HorizontalStackLayout HorizontalOptions="Center" MaximumWidthRequest="250">
+                        <Label Text="{Binding Name}" Margin="10" />
+                        <Label Text="{Binding Quantity, StringFormat='{0} db'}" Margin="10"/>
+                        <Label Text="{Binding UnitPrice, StringFormat='{0} Ft'}" Margin="10"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+            
+
+        <Button 
+             Text="Eladás"
+             Command="{Binding SellCandyCommand}"
+             Background="Green"
+             CornerRadius="25" 
+             MaximumWidthRequest="200"
+            Margin="10"
+             /> 
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,37 @@
+{
+  "Products": [
+    {
+      "Id": 1,
+      "Name": "Gummy Bears",
+      "Price": 449,
+      "Stock": 120
+    },
+    {
+      "Id": 2,
+      "Name": "Salted Caramel Dragee",
+      "Price": 899,
+      "Stock": 45
+    },
+    {
+      "Id": 3,
+      "Name": "Sour Lollipop",
+      "Price": 150,
+      "Stock": 300
+    }
+  ],
+  "Orders": [
+    {
+      "Id": 1,
+      "Date": "2024-05-20T14:30:00Z",
+      "Items": [
+        {
+          "ProductId": 1,
+          "Name": "Gummy Bears",
+          "Quantity": 2,
+          "UnitPrice": 450
+        }
+      ],
+      "TotalAmount": 1650
+    }
+  ]
+}

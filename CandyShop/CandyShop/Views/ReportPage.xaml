@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:CandyShop.ViewModels"
+             xmlns:models="clr-namespace:CandyShop.Common"
+             x:DataType="viewModel:ReportViewModel"
+             x:Class="CandyShop.Views.ReportPage"
+             Title="ReportPage">
+    <VerticalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label Text="Összes árbevétel: "/>
+            <Label Text="{Binding TotalRevenueV, StringFormat='{0:C}'}"/>
+        </HorizontalStackLayout>
+        
+        <HorizontalStackLayout>
+            <Label Text="Legtöbb darabot eladott cukor: "/>
+            <Label Text="{Binding MSoldProduct, FallbackValue='-'}" />
+        </HorizontalStackLayout>
+
+        <Label Text="Semennyit eladott cukrok: "/>
+        <CollectionView ItemsSource="{Binding NSoldProduct}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Product">
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Name}" Margin="5"/>
+                        <Label Text="{Binding Price, StringFormat='{0:C}'}"  Margin="5"/>
+                        <Label Text="{Binding Stock, StringFormat='Készleten: {0}'}"  Margin="5"/>
+                    </HorizontalStackLayout>    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </VerticalStackLayout>
+</ContentPage>

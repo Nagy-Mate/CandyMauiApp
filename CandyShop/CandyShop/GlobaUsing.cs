@@ -1,0 +1,11 @@
+﻿global using CandyShop.ViewModels;
+global using CommunityToolkit.Maui;
+global using Microsoft.Extensions.Logging;
+global using CandyShop.Views;
+global using CandyShop.Common;
+global using System.Text.Json;
+global using CandyShop.Services;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Maui.Core.Extensions;
+global using System.Collections.ObjectModel;
+global using CommunityToolkit.Mvvm.Input;
